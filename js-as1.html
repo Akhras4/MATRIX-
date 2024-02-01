@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="js-as1.css">
+    <link rel="script" href="js-as1.js">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">materx master</div>
+        <div class="nav-lift-con">
+            <a href="">About</a>
+            <a href=""> contact</a>
+            <a href="">sign in</a>
+        </div>
+    </nav>
+    <main>
+        <div class="image-master"><img scr="https://matrixmaster.info/wp-content/uploads/2021/06/cropped-logo-mm-white.png" srcset="https://matrixmaster.info/wp-content/uploads/2021/06/cropped-logo-mm-white.png 1214w, https://matrixmaster.info/wp-content/uploads/2021/06/cropped-logo-mm-white-300x169.png 300w, https://matrixmaster.info/wp-content/uploads/2021/06/cropped-logo-mm-white-1024x577.png 1024w, https://matrixmaster.info/wp-content/uploads/2021/06/cropped-logo-mm-white-768x433.png 768w" width="600px" height="400px"></div>
+        <div class="add-user" onclick="dialog_open()">
+            <div class="image">
+                <img src="plus.png" width="30px" height="30px">
+            </div>
+            <div class="par">
+                <p>Add to tabel</p>
+            </div>
+        </div>
+        <div class="tabel" id="data-table">
+            <table id="">
+                <thead>
+                    <tr>
+                        <th>first name</th>
+                        <th>last name</th>
+                        <th>email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+            </table>
+
+        </div>
+    </main>
+        <dialog id="dialog-url">
+            <form id="user-add">
+            <div class="c-dialog-url">
+            <h4>Add shortcut</h4>
+            <label name="name-web-user" id="name">first Name</label>
+            <input  type="text" for="name" class="dialog-input">
+            <label name="last-web-user" id="user-last">last name</label>
+            <input type="text" for="user-last"class="dialog-input">
+            <label name="last-web-user" id="user-email">email</label>
+            <input type="email" for="user-email"class="dialog-input">
+            <div class="but">
+                <button class="dialog-button" id="done" type="submit" value="done" onclick="dialog_close() ">Done</button>
+                <button class="dialog-button" type="button" value="close" onclick="dialog_close()">close</button>
+            </div>
+            </div>
+            </form>
+        </dialog>
+</body>
+<script>
+    function dialog_open(){
+        dialog=document.getElementById("dialog-url");
+        dialog.showModal()
+    }
+    function dialog_close(){
+        dialog=document.getElementById("dialog-url");
+        dialog.close()
+    }
+    function read() {
+        var firstname = document.getElementsByTagName("input")[0].value;
+        var lastname = document.getElementsByTagName("input")[1].value;
+        var email = document.getElementsByTagName("input")[2].value;
+        console.log(email);
+        Writetable(firstname, lastname, email);
+    }
+    
+    function Writetable(first, last, email) {
+        var table = document.getElementById("data-table").getElementsByTagName('tbody')[0];
+        var newRow = table.insertRow(table.rows.length);
+        var n = newRow.insertCell(0);
+        var m = newRow.insertCell(1);
+        var z = newRow.insertCell(2);
+        n.innerHTML = first;
+        m.innerHTML = last;
+        z.innerHTML = email;
+        console.log(first);
+    }
+    
+    document.getElementById("user-add").addEventListener("submit", readsubmit) 
+    function readsubmit(){
+        event.preventDefault(); 
+        read(); 
+    };
+</script>
+</html>
